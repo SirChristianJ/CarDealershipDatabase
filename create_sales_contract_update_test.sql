@@ -14,5 +14,6 @@ INNER JOIN cardealership.vehicles
 		ON	vehicles.vin = sales_contracts.vehicle_vin;
         
 UPDATE cardealership.vehicles
+INNER JOIN cardealership.sales_contracts
+		ON	vehicles.vin = sales_contracts.vehicle_vin
 SET vehicles.SOLD = TRUE
-WHERE cardealership.vehicles.vin = cardealership.sales_contracts.vehicle_vin;
