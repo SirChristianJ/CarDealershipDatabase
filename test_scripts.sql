@@ -41,3 +41,15 @@ INNER JOIN cardealership.dealerships
 		ON dealerships.dealership_id = inventory.dealership_id
 WHERE inventory.vin = "1C6RR7FT5ES123456";
 
+-- Find all dealerships that have a specfic type of car (i.e Red Ford Mustang)
+SELECT
+*
+FROM cardealership.vehicles
+INNER JOIN cardealership.inventory
+		ON inventory.vin = vehicles.vin
+INNER JOIN cardealership.dealerships
+		ON dealerships.dealership_Id = inventory.dealership_id
+WHERE vehicles.type = "sedan" && vehicles.make = "Honda";
+
+
+-- 
