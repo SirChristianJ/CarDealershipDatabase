@@ -52,4 +52,29 @@ INNER JOIN cardealership.dealerships
 WHERE vehicles.type = "sedan" && vehicles.make = "Honda";
 
 
--- 
+-- Get all sales information for specific dealership
+SELECT
+dealerships.dealership_id
+,dealerships.name
+,dealerships.address
+,dealerships.phone
+,vehicles.vin
+,vehicles.year
+,vehicles.make
+,vehicles.model
+,vehicles.type
+,vehicles.color
+,vehicles.odometer
+,vehicles.price
+,vehicles.SOLD
+,sales_contracts.sales_id
+,sales_contracts.date
+FROM cardealership.dealerships
+INNER JOIN cardealership.inventory
+		ON inventory.dealership_id = dealerships.dealership_id
+INNER JOIN cardealership.vehicles
+		ON vehicles.vin = inventory.vin
+INNER JOIN cardealership.sales_contracts
+		ON sales_contracts.vehicle_vin = vehicles.vin
+        
+WHERE dealerships.dealership_id = 1 AND sales_contracts.date LIKE "%2022%";
